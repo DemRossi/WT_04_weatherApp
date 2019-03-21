@@ -44,7 +44,11 @@ var Weather = function () {
             }).then(function (json) {
                 //console.log(json);
                 var temp = document.createElement("h1");
-                temp.innerHTML = json.currently.summary;
+                var text = json.currently.summary;
+                temp.innerHTML = text;
+                var picture = new Picture();
+                picture.getBGI(text);
+                //console.log(text);
                 document.querySelector('body').appendChild(temp);
             });
         }
@@ -63,7 +67,17 @@ var Picture = function () {
     _createClass(Picture, [{
         key: 'initialize',
         value: function initialize() {
-            console.log(navigator);
+            //console.log(navigator);
+        }
+    }, {
+        key: 'getBGI',
+        value: function getBGI(text) {
+            var url = 'https://cors-anywhere.herokuapp.com/https://pixabay.com/api/2697105-3d0b707c57c84fb46088ddcb9&q=' + text + '+weather&image_type=phot&orientation=horizontal&category=nature';
+            fetch(url).then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                console.log(json);
+            });
         }
     }]);
 
@@ -71,6 +85,6 @@ var Picture = function () {
 }();
 
 var app = new Weather('f78383124c36094464720fe3b57cd3e2');
-var picture = new Picture();
+//let picture = new Picture();
 
 //# sourceMappingURL=app.js.map
