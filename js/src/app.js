@@ -35,4 +35,13 @@ class Weather{
         });
     }
 }
+class Picture{
+    constructor(){
+        this.initialize();
+    }
+    initialize(){
+        console.log(navigator);
+    }
+}
 let app = new Weather('f78383124c36094464720fe3b57cd3e2');
+let picture = new Picture();

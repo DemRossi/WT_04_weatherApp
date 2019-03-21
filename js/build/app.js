@@ -53,6 +53,24 @@ var Weather = function () {
     return Weather;
 }();
 
+var Picture = function () {
+    function Picture() {
+        _classCallCheck(this, Picture);
+
+        this.initialize();
+    }
+
+    _createClass(Picture, [{
+        key: 'initialize',
+        value: function initialize() {
+            console.log(navigator);
+        }
+    }]);
+
+    return Picture;
+}();
+
 var app = new Weather('f78383124c36094464720fe3b57cd3e2');
+var picture = new Picture();
 
 //# sourceMappingURL=app.js.map
