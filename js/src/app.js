@@ -54,10 +54,12 @@ class Picture{
             return response.json();
         })
         .then(json=>{
-            console.log(json);
+            //console.log(json);
             let image = json.hits[2].largeImageURL;
             console.log(image);
-
+            document.body.style.backgroundImage = `url('${image}')`;
+            document.body.style.backgroundPosition = "center center";
+            document.body.style.backgroundRepeat = "no-repeat";
         })
     }
 }

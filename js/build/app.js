@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -13,13 +13,13 @@ var Weather = function () {
     }
 
     _createClass(Weather, [{
-        key: 'initialize',
+        key: "initialize",
         value: function initialize() {
             // console.log(navigator); 
             this.getMyLocation();
         }
     }, {
-        key: 'getMyLocation',
+        key: "getMyLocation",
         value: function getMyLocation() {
             var _this = this;
 
@@ -35,10 +35,10 @@ var Weather = function () {
             });
         }
     }, {
-        key: 'getWeather',
+        key: "getWeather",
         value: function getWeather(lat, lng) {
             //console.log('getting weather');
-            var url = 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/' + this.API_KEY + '/' + lat + ',' + lng + '?units=si';
+            var url = "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + this.API_KEY + "/" + lat + "," + lng + "?units=si";
             fetch(url).then(function (response) {
                 return response.json();
             }).then(function (json) {
@@ -65,21 +65,24 @@ var Picture = function () {
     }
 
     _createClass(Picture, [{
-        key: 'initialize',
+        key: "initialize",
         value: function initialize() {
             //console.log(navigator);
         }
     }, {
-        key: 'getBGI',
+        key: "getBGI",
         value: function getBGI(text) {
             //let url = `https://cors-anywhere.herokuapp.com/https://pixabay.com/api/2697105-3d0b707c57c84fb46088ddcb9&q=${text}+weather&image_type=phot&orientation=horizontal&category=nature`;
-            var url = 'https://cors-anywhere.herokuapp.com/https://pixabay.com/api/?key=2697105-3d0b707c57c84fb46088ddcb9&q=' + text + '+weather&image_type=photo&orientation=horizontal&category=nature';
+            var url = "https://cors-anywhere.herokuapp.com/https://pixabay.com/api/?key=2697105-3d0b707c57c84fb46088ddcb9&q=" + text + "+weather&image_type=photo&orientation=horizontal&category=nature";
             fetch(url).then(function (response) {
                 return response.json();
             }).then(function (json) {
-                console.log(json);
+                //console.log(json);
                 var image = json.hits[2].largeImageURL;
                 console.log(image);
+                document.body.style.backgroundImage = "url('" + image + "')";
+                document.body.style.backgroundPosition = "center center";
+                document.body.style.backgroundRepeat = "no-repeat";
             });
         }
     }]);
