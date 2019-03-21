@@ -48,7 +48,6 @@ class Picture{
         //console.log(navigator);
     }
     getBGI(text){
-        //let url = `https://cors-anywhere.herokuapp.com/https://pixabay.com/api/2697105-3d0b707c57c84fb46088ddcb9&q=${text}+weather&image_type=phot&orientation=horizontal&category=nature`;
         let url = `https://cors-anywhere.herokuapp.com/https://pixabay.com/api/?key=${this.API_KEY}&q=${text}+weather&image_type=photo&orientation=horizontal&category=nature`;
         fetch(url)
         .then(response =>{
@@ -56,7 +55,8 @@ class Picture{
         })
         .then(json=>{
             //console.log(json);
-            let image = json.hits[2].largeImageURL;
+            let ran = Math.floor(Math.random()*21);
+            let image = json.hits[ran].largeImageURL;
             console.log(image);
             document.body.style.backgroundImage = `url('${image}')`;
             document.body.style.backgroundPosition = "center center";

@@ -73,13 +73,13 @@ var Picture = function () {
     }, {
         key: 'getBGI',
         value: function getBGI(text) {
-            //let url = `https://cors-anywhere.herokuapp.com/https://pixabay.com/api/2697105-3d0b707c57c84fb46088ddcb9&q=${text}+weather&image_type=phot&orientation=horizontal&category=nature`;
             var url = 'https://cors-anywhere.herokuapp.com/https://pixabay.com/api/?key=' + this.API_KEY + '&q=' + text + '+weather&image_type=photo&orientation=horizontal&category=nature';
             fetch(url).then(function (response) {
                 return response.json();
             }).then(function (json) {
                 //console.log(json);
-                var image = json.hits[2].largeImageURL;
+                var ran = Math.floor(Math.random() * 21);
+                var image = json.hits[ran].largeImageURL;
                 console.log(image);
                 document.body.style.backgroundImage = 'url(\'' + image + '\')';
                 document.body.style.backgroundPosition = "center center";
