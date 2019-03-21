@@ -32,7 +32,7 @@ class Weather{
             let temp = document.createElement("h1");
             let text = json.currently.summary;
             temp.innerHTML = text;
-            let picture = new Picture();
+            let picture = new Picture('2697105-3d0b707c57c84fb46088ddcb9');
             picture.getBGI(text);
             //console.log(text);
             document.querySelector('body').appendChild(temp);
@@ -40,15 +40,16 @@ class Weather{
     }
 }
 class Picture{
-    constructor(){
+    constructor(API_KEY){
         this.initialize();
+        this.API_KEY = API_KEY;
     }
     initialize(){
         //console.log(navigator);
     }
     getBGI(text){
         //let url = `https://cors-anywhere.herokuapp.com/https://pixabay.com/api/2697105-3d0b707c57c84fb46088ddcb9&q=${text}+weather&image_type=phot&orientation=horizontal&category=nature`;
-        let url = `https://cors-anywhere.herokuapp.com/https://pixabay.com/api/?key=2697105-3d0b707c57c84fb46088ddcb9&q=${text}+weather&image_type=photo&orientation=horizontal&category=nature`;
+        let url = `https://cors-anywhere.herokuapp.com/https://pixabay.com/api/?key=${this.API_KEY}&q=${text}+weather&image_type=photo&orientation=horizontal&category=nature`;
         fetch(url)
         .then(response =>{
             return response.json();
