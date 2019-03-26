@@ -31,9 +31,10 @@ class Weather{
             console.log(json);
             let temp = document.createElement("h1");
             let text = json.currently.summary;
+            let search = json.currently.icon;
             temp.innerHTML = text;
             let picture = new Picture('2697105-3d0b707c57c84fb46088ddcb9');
-            picture.getBGI(text);
+            picture.getBGI(search);
             //console.log(text);
             document.querySelector('body').appendChild(temp);
         });
@@ -47,15 +48,16 @@ class Picture{
     initialize(){
         //console.log(navigator);
     }
-    getBGI(text){
-        let url = `https://cors-anywhere.herokuapp.com/https://pixabay.com/api/?key=${this.API_KEY}&q=${text}+weather&image_type=photo&orientation=horizontal&category=nature`;
+    getBGI(search){
+        //https://cors-anywhere.herokuapp.com/https://pixabay.com/api/?key=${this.API_KEY}&q=${search}+weather&image_type=photo&orientation=horizontal&category=nature
+        let url = `https://cors-anywhere.herokuapp.com/https://pixabay.com/api/?key=${this.API_KEY}&q=${search}+weather`;
         fetch(url)
         .then(response =>{
             return response.json();
         })
         .then(json=>{
             //console.log(json);
-            let ran = Math.floor(Math.random()*21);
+            let ran = Math.floor(Math.random()*json.hits.length);
             let image = json.hits[ran].largeImageURL;
             console.log(image);
             document.body.style.backgroundImage = `url('${image}')`;
